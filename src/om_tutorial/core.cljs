@@ -10,8 +10,13 @@
 (defui HelloWorld
   Object
   (render [this]
-          (dom/div nil "Hello, world.")))
+          (dom/div nil (get (om/props this) :title))))
 
 (def hello (om/factory HelloWorld))
 
-(js/ReactDOM.render (hello) (gdom/getElement "app"))
+(js/ReactDOM.render
+ (apply dom/div nil
+   (map #(hello {:react-key %
+                 :title (str "Hello, " %)})
+        (map #(str % " Lance")["Alpha" "Beta" "Gamma"])))
+ (gdom/getElement "app"))
