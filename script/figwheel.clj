@@ -11,7 +11,7 @@
     :compiler {:main 'om-tutorial.core
                :asset-path "js"
                :output-to "resources/public/js/main.js"
-               :output=dir "resources/public/js"
+               :output-dir "resources/public/js"
                :verbose true}}]})
 
 (ra/cljs-repl)
